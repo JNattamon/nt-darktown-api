@@ -1,7 +1,9 @@
+const response_code = require('../constants/response_code');
+
 class Response {
-    constructor(code = "0000", message = "Success", result = []) {
-        this.code = code;
-        this.message = message;
+    constructor(responseCode = response_code.SUCCESS_CODE, responseMsg = "Success", result = []) {
+        this.responseCode = responseCode;
+        this.responseMsg = responseMsg;
         this.result = result;
     }
 }
