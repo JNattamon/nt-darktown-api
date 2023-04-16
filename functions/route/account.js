@@ -11,6 +11,12 @@ app.get('/', function (req, res) {
     res.send(result)
 });
 
+app.get('/character-detail', async function (req, res) {
+    let result = await AccountService.getDetail(req.query.code)
+    res.contentType('application/json');
+    res.send(result)
+});
+
 app.get('/character-list', async function (req, res) {
     let result = await AccountService.getCharacterlist()
     res.contentType('application/json');

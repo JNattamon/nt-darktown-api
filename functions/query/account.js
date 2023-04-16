@@ -1,4 +1,8 @@
 module.exports = {
+    GET_CHARACTER_DETAIL: `
+      SELECT * FROM character_list WHERE code = ?
+    `,
+
     GET_CHARACTER_LIST: `
       SELECT * FROM character_list
     `,

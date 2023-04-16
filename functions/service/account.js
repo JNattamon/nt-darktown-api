@@ -2,7 +2,24 @@ const DBService = require('./dbservice');
 const ACCOUNT_SQL = require('../query/account');
 const response_code = require('../constants/response_code');
 const response = require('../shared/response');
+
 class AccountService {
+    async getDetail(code) {
+        try {
+            let result = await DBService.connectDB(
+                ACCOUNT_SQL.GET_CHARACTER_DETAIL,
+                code
+            );
+            if (result.length > 0) {
+                return new response(response_code.SUCCESS_CODE, 'Success', result[0]);
+            } else {
+                return new response(response_code.ERROR_REQUEST_INCORRECT, 'ไม่พบตัวละคร');
+            }
+        } catch (exception) {
+            console.log(exception);
+        }
+    }
+
     async getCharacterlist() {
         try {
             let result = await DBService.connectDB(
